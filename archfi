@@ -15,6 +15,8 @@
 apptitle="Arch Linux Fast Install (archfi) - Version: 2018.06.05.02.14.13 (GPLv3)"
 baseurl=https://raw.githubusercontent.com/MatMoul/archfi/master
 
+SCRIPT=$(readlink -f "$0")
+SCRIPTDIR=$(dirname "$SCRIPT")
 
 # --------------------------------------------------------
 mainmenu(){
@@ -723,7 +725,8 @@ installbase(){
 
 copycustomizations(){
 	clear
-	cp -r ../../config/ /mnt/etc/skel
+	cp -r "${SCRIPTDIR}/config/" 
+/mnt/etc/skel
 	echo "customizations copied to /etc/skel - new users will be able to use ~/config/config.sh to install premade customizations."
 	pressanykey
 }
