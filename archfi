@@ -537,11 +537,11 @@ formatswapdevice(){
 }
 formatdevice(){
   options=()
-  options+=("btrfs" "")
-  options+=("reiserfs" "")
   options+=("ext4" "")
   options+=("ext3" "")
   options+=("ext2" "")
+  options+=("btrfs" "")
+  options+=("reiserfs" "")
   options+=("xfs" "")
   options+=("jfs" "")
   if [ ! "$3" = "noluks" ]; then
@@ -682,8 +682,8 @@ installmenu(){
     nextitem=$1
   fi
   options=()
-  options+=("$txteditmirrorlist" "($txtoptional)")
-  options+=("$txtinstallarchlinux" "pacstrap base")
+  options+=("$txteditmirrorlist" " ($txtoptional)")
+  options+=("$txtinstallarchlinux" " ($txtpacstrap)")
   options+=("$copycustomizations" "")
   options+=("$txtconfigarchlinux" "")
   sel=$(whiptail --backtitle "$apptitle" --title "$txtinstallmenu" --menu "" --cancel-button "$txtunmount" --default-item "$nextitem" 0 0 0 \
@@ -1263,7 +1263,11 @@ loadstrings(){
   
   locale=en_US.UTF-8
   #font=
+
+
   txtcopycustomizations="Copy Kensand Config"
+  txtpacstrap="pacstrap base"
+
   txtexit="Exit"
   txtback="Back"
   txtignore="Ignore"
