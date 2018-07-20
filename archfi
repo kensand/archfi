@@ -723,7 +723,7 @@ installbase(){
 
 copycustomizations(){
 	clear
-	cp -r config/ /mnt/etc/skel
+	cp -r ../../config/ /mnt/etc/skel
 	pressanykey
 }
 
