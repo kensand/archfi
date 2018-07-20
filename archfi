@@ -684,6 +684,7 @@ installmenu(){
   options=()
   options+=("$txteditmirrorlist" "($txtoptional)")
   options+=("$txtinstallarchlinux" "pacstrap base")
+  options+=("$copycustomizations" "")
   options+=("$txtconfigarchlinux" "")
   sel=$(whiptail --backtitle "$apptitle" --title "$txtinstallmenu" --menu "" --cancel-button "$txtunmount" --default-item "$nextitem" 0 0 0 \
     "${options[@]}" \
@@ -696,8 +697,12 @@ installmenu(){
       ;;
       "$txtinstallarchlinux")
         installbase
-        nextitem="$txtconfigarchlinux"
+        nextitem="$txtcopycustomizations"
       ;;
+      "$txtcopycustomizations")
+		copycustomizations
+		nextitem="$txtconfigarchlinux"
+	  ;;
       "$txtconfigarchlinux")
         archmenu
         nextitem="$txtconfigarchlinux"
@@ -714,6 +719,12 @@ installbase(){
   echo "pacstrap /mnt base"
   pacstrap /mnt base
   pressanykey
+}
+
+copycustomizations(){
+	clear
+	cp -r config/ /mnt/etc/skel
+	pressanykey
 }
 
 unmountdevices(){
@@ -1252,7 +1263,7 @@ loadstrings(){
   
   locale=en_US.UTF-8
   #font=
-  
+  txtcopycustomizations="Copy Kensand Config"
   txtexit="Exit"
   txtback="Back"
   txtignore="Ignore"
