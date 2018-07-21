@@ -725,8 +725,7 @@ installbase(){
 
 copycustomizations(){
 	clear
-	cp -r "${SCRIPTDIR}/config/" 
-/mnt/etc/skel
+	cp -r "${SCRIPTDIR}/config/" /mnt/etc/skel
 	echo "customizations copied to /etc/skel - new users will be able to use ~/config/config.sh to install premade customizations."
 	pressanykey
 }
